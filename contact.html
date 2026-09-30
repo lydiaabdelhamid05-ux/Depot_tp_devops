@@ -28,7 +28,13 @@
     <div class="ligne_graphique">
       <h2 class="titre_ligne">Formulaire de Contact</h2>
       
+
       <form class="contact-form" id="contact-form">
+
+      <!-- Envoi réel via FormSubmit -->
+      <form class="contact-form" action="https://formsubmit.co/VOTRE_VRAI_EMAIL@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        
         <div class="form-group">
           <label for="name">Nom :</label>
           <input type="text" id="name" name="user_name" placeholder="Votre nom" required>
