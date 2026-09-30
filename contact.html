@@ -24,8 +24,8 @@
     <h1>Contactez-nous</h1>
     <p>Une question ou une suggestion ? Remplissez le formulaire ci-dessous.</p>
 
-    <!-- Section Formulaire avec l'ancre pour le bouton de décalage -->
-    <div class="ligne_graphique" id="liste-contacts">
+    <!-- Section Formulaire -->
+    <div class="ligne_graphique">
       <h2 class="titre_ligne">Formulaire de Contact</h2>
       
       <form class="contact-form" id="contact-form">
@@ -47,31 +47,61 @@
         <button type="submit" class="btn-submit">Envoyer</button>
       </form>
 
-      <!-- Zone d'affichage du statut d'envoi -->
       <p id="status-message" style="margin-top: 1rem; font-weight: bold;"></p>
+    </div>
+
+    <!-- SECTION LISTE DES CONTACTS (Cible du bouton de décalage) -->
+    <div class="ligne_graphique" id="liste-contacts" style="margin-top: 2rem;">
+      <h2 class="titre_ligne">Liste des Contacts Reçus</h2>
+      
+      <table id="tableau-contacts" style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+        <thead>
+          <tr style="background-color: #1a365d; color: white; text-align: left;">
+            <th style="padding: 0.8rem; border: 1px solid #cbd5e0;">Nom</th>
+            <th style="padding: 0.8rem; border: 1px solid #cbd5e0;">E-mail</th>
+            <th style="padding: 0.8rem; border: 1px solid #cbd5e0;">Message</th>
+          </tr>
+        </thead>
+      </table>
     </div>
   </main>
 
-  <!-- Footer avec le copyright -->
+  <!-- Footer -->
   <footer>
     <div class="copyright">
       <p>© 2026 Mon Site DevOps - Tous droits réservés</p>
     </div>
   </footer>
 
-  <!-- Script d'envoi local fluide sans erreur 500 -->
+  <!-- Script d'ajout dynamique dans la liste -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const status = document.getElementById('status-message');
-        status.style.color = '#3182ce';
-        status.innerText = "Envoi du message en cours...";
+        
+        // Récupération des valeurs saisies
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
 
-        setTimeout(() => {
-            status.style.color = 'green';
-            status.innerText = "✓ Message envoyé avec succès !";
-            this.reset();
-        }, 800);
+        // Création d'une nouvelle ligne dans le tableau
+        const tbody = document.getElementById('contacts-body');
+        const newRow = document.createElement('tr');
+
+        newRow.innerHTML = `
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e0;">${name}</td>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e0;">${email}</td>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e0;">${message}</td>
+        `;
+
+        tbody.appendChild(newRow);
+
+        // Affichage du message de confirmation
+        const status = document.getElementById('status-message');
+        status.style.color = 'green';
+        status.innerText = "✓ Contact ajouté avec succès à la liste ci-dessous !";
+
+        // Réinitialisation du formulaire
+        this.reset();
     });
   </script>
 
