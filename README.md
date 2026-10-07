@@ -1,3 +1,3 @@
 # Documentation
 
-![Git Log](./log.png)
+![Git Log](log.png.png)
