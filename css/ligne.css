@@ -1,4 +1,4 @@
-/* Reset et bases */
+/* Reset et styles globaux */
 * {
   margin: 0;
   padding: 0;
@@ -10,18 +10,23 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
   padding: 2rem;
   max-width: 900px;
   margin: 0 auto;
+  width: 100%;
+  flex: 1; /* Pousse le footer au bas de la page */
 }
 
-/* Menu de Navigation */
+/* Barre de navigation */
 header {
   background-color: #1a365d;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -64,7 +69,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Composant ligne_graphique */
+/* Section Ligne Graphique */
 .ligne_graphique {
   margin-top: 2rem;
   padding: 1.5rem;
@@ -78,13 +83,13 @@ h1 {
   text-align: left;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1a365d;
+  color: blue;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #e2e8f0;
 }
 
-/* Formulaire de Contact */
+/* Formulaire de contact */
 .contact-form .form-group {
   margin-bottom: 1rem;
 }
@@ -116,4 +121,20 @@ h1 {
 
 .btn-submit:hover {
   background-color: #2b6cb0;
+}
+
+/* Footer fixé en bas */
+footer {
+  background-color: #1a365d;
+  color: #ffffff;
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 3px solid #3182ce;
+  width: 100%;
+}
+
+.copyright p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #e2e8f0;
 }
