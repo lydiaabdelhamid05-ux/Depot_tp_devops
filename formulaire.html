@@ -4,6 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulaire d'inscription</title>
+    <style>
+    	.valid {
+        	color: green;
+        	font-weight: bold;
+    	}
+
+    	.invalid {
+        	color: red;
+        	font-weight: bold;
+    	}
+    </style>
 </head>
 
 <body>
@@ -14,6 +25,11 @@
         <div class="form-group">
             <label for="password">Mot de passe</label>
             <input type="password" id="password" required>
+	    <p id="passwordRequirements">
+  		Le mot de passe doit contenir au moins 8 caractères,
+  		une lettre, un chiffre et un caractère spécial.
+	    </p>
+	    <p id="passwordFeedback"></p>
         </div>
 
         <button type="submit" id="submitBtn" disabled>
@@ -30,10 +46,19 @@
 
         const inputPassword = document.getElementById('password');
         const submitBtn = document.getElementById('submitBtn');
-
+        const passwordFeedback = document.getElementById('passwordFeedback');
         inputPassword.addEventListener('input', (e) => {
             const estValide = validerMotDePasse(e.target.value);
-            submitBtn.disabled = !estValide;
+
+	    if (estValide) {
+        	passwordFeedback.textContent = "Mot de passe valide";
+    	        passwordFeedback.className = "valid";
+	    } else {
+        	passwordFeedback.textContent = "Mot de passe invalide";
+    	        passwordFeedback.className = "invalid";
+            }
+            
+	    submitBtn.disabled = !estValide;
         });
     </script>
 
