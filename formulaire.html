@@ -24,7 +24,7 @@
     <script>
         function validerMotDePasse(motDePasse) {
             // Au moins 8 caractères, une lettre et un chiffre
-            const regex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+            const regex = /^(?=.[A-Za-z])(?=.\d)(?=.*[.&#\-_]).{8,}$/;
             return regex.test(motDePasse);
         }
 
