@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'inscription</title>
+</head>
+
+<body>
+
+    <h1>Inscription</h1>
+
+    <form id="monFormulaire">
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" required>
+        </div>
+
+        <button type="submit" id="submitBtn" disabled>
+            S'inscrire
+        </button>
+    </form>
+
+    <script>
+        function validerMotDePasse(motDePasse) {
+            // Au moins 8 caractères, une lettre et un chiffre
+            const regex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+            return regex.test(motDePasse);
+        }
+
+        const inputPassword = document.getElementById('password');
+        const submitBtn = document.getElementById('submitBtn');
+
+        inputPassword.addEventListener('input', (e) => {
+            const estValide = validerMotDePasse(e.target.value);
+            submitBtn.disabled = !estValide;
+        });
+    </script>
+
+</body>
+</html>
